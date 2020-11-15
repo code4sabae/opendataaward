@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8">
+<!DOCTYPE html><html><head><meta charset="utf-8">
 <title>VLEDのオープンデータ勝手表彰受賞者</title>
 <style>
 table {
@@ -14,51 +12,17 @@ td {
 td:nth-child(3) {
   white-space: nowrap;
 }
-td:nth-child(4) {
-  x-width: 20em;
-  word-break: break-all;
-  x-overflow: hidden;
-}
 </style>
-<body>
+</head><body>
 <h1>VLEDのオープンデータ勝手表彰受賞者</h1>
 <script type="module">
 import { CSV } from "https://code4sabae.github.io/js/CSV.js";
-
-const makeTableFromCSV = (csv) => {
-  const c = (tag) => document.createElement(tag);
-  const tbl = c("table");
-  const tr0 = c("tr");
-  tbl.appendChild(tr0);
-  for (let i = 0; i < csv[0].length; i++) {
-    const th = c("th");
-    tr0.appendChild(th);
-    th.textContent = csv[0][i];
-  }
-  for (let i = 1; i < csv.length; i++) {
-    const tr = c("tr");
-    tbl.appendChild(tr);
-    for (let j = 0; j < csv[i].length; j++) {
-      const td = c("td");
-      tr.appendChild(td);
-      const s = csv[i][j];
-      if (s.startsWith("http://") || s.startsWith("https://")) {
-        const a = c("a");
-        a.href = a.textContent = s;
-        td.appendChild(a);
-      } else {
-        td.textContent = s;
-      }
-    }
-  }
-  return tbl;
-};
 
 (async () => {
   const url = "https://code4sabae.github.io/opendataaward/opendataaward-winner.csv";
   const data = await (await fetch(url)).text();
   const csv = CSV.decode(data);
-  document.body.appendChild(makeTableFromCSV(csv));
+  document.body.appendChild(CSV.makeTable(csv));
 })();
 </script>
 </body>
