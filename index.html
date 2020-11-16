@@ -1,13 +1,22 @@
 <!DOCTYPE html><html><head><meta charset="utf-8">
 <title>VLEDのオープンデータ勝手表彰受賞者</title>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta property="og:image"  content="https://code4sabae.github.io/opendataaward/opendataaward.png">
+<meta name="twitter:image" content="https://code4sabae.github.io/opendataaward/opendataaward.png">
 <style>
 table {
   border-collapse: collapse;
+  overflow: scroll;
+}
+th {
+  white-space: nowrap;
+  font-size: 70%;
 }
 td {
   border: 1px solid gray;
   padding-left: .3em;
   padding-right: .3em;
+  font-size: 70%;
 }
 td:nth-child(3) {
   white-space: nowrap;
@@ -20,9 +29,9 @@ import { CSV } from "https://code4sabae.github.io/js/CSV.js";
 
 (async () => {
   const url = "https://code4sabae.github.io/opendataaward/opendataaward-winner.csv";
-  const data = await (await fetch(url)).text();
-  const csv = CSV.decode(data);
-  document.body.appendChild(CSV.makeTable(csv));
+  const csv = await CSV.fetch(url);
+  const tbl = CSV.makeTable(csv);
+  document.body.appendChild(tbl);
 })();
 </script>
 </body>
