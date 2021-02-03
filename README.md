@@ -1,4 +1,4 @@
-# オープンデータ勝手表彰受賞者
+# オープンデータ勝手表彰受賞者オープンデータ
 - [CSVオープンデータ](https://code4sabae.github.io/opendataaward/opendataaward-winner.csv)
 - [サンプルwebアプリ](https://code4sabae.github.io/opendataaward/)
 
